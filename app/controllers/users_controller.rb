@@ -39,6 +39,14 @@ class UsersController < ApplicationController
     counts(@user)
   end
   
+  def like_microposts
+    @user=User.find(params[:id])
+    # To find the micropost 
+    @micropost=Micropost.find(params[:id])
+    @like_microposts=@user.like_microposts.page(params[:page])
+    counts(@user)
+  end
+  
   
    private
 
